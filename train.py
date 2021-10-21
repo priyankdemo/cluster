@@ -23,4 +23,5 @@ with mlflow.start_run():
         kmeans = KMeans(n_clusters = i, init = 'k-means++', random_state = 42)
         kmeans.fit(X)
         wcss.append(kmeans.inertia_)
+        mlflow.log_metric("score", "0.1")
         mlflow.sklearn.log_model(kmeans, "model")
